@@ -1,5 +1,5 @@
 #include <iostream>
-#define g 9.8
+constexpr double g{9.8};
 
 double velocity(double h, int t, double vin)
 {
@@ -15,7 +15,7 @@ double calculate(double height, int t, double InitialVelocity)
     return height - InitialVelocity * t - g * t * t * 0.5;
 }
 
-void height(int y, double x)
+void printHeight(int y, double x)
 {
     if (x > 0)
         std::cout << "At " << y << " seconds, the ball is at height: " << x << '\n';
@@ -24,11 +24,11 @@ void height(int y, double x)
         std::cout << "At " << y << " seconds, the ball is on the ground.\n";
 }
 
-void printvelocity(double h, int t, double velocity)
+void printVelocity(double h, int t, double vel)
 {
 
     if (h > 0)
-        std::cout << "At " << t << " the object has the velocity of " << velocity << " m/s" << '\n'
+        std::cout << "At " << t << " the object has the velocity of " << vel << " m/s" << '\n'
                   << '\n';
 
     else
@@ -46,34 +46,21 @@ int main()
     std::cout << "Enter the initial velocity in m/s: ";
 
     double v{};
-
     std::cin >> v;
-    double c1{calculate(h, 0, v)};
-    double c2{calculate(h, 1, v)};
-    double c3{calculate(h, 2, v)};
-    double c4{calculate(h, 3, v)};
-    double c5{calculate(h, 4, v)};
-    double c6{calculate(h, 5, v)};
 
-    double v1{velocity(c1, 0, v)};
-    double v2{velocity(c2, 1, v)};
-    double v3{velocity(c3, 2, v)};
-    double v4{velocity(c4, 3, v)};
-    double v5{velocity(c5, 4, v)};
-    double v6{velocity(c6, 5, v)};
+    std::cout << "How many seconds: ";
+    int seconds{};
+    std::cin >> seconds;
+    int currentSeconds{0};
+    while (currentSeconds <= seconds)
+    {
+        double c1{calculate(h, currentSeconds, v)};
+        double v1{velocity(c1, currentSeconds, v)};
 
-    height(0, c1);
-    printvelocity(c1, 0, v1);
-    height(1, c2);
-    printvelocity(c2, 1, v2);
-    height(2, c3);
-    printvelocity(c3, 2, v3);
-    height(3, c4);
-    printvelocity(c4, 3, v4);
-    height(4, c5);
-    printvelocity(c5, 4, v5);
-    height(5, c6);
-    printvelocity(c6, 5, v6);
+        printHeight(currentSeconds, c1);
+        printVelocity(c1, currentSeconds, v1);
 
+        ++currentSeconds;
+    }
     return 0;
 }
