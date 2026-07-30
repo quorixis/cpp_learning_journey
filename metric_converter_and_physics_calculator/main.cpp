@@ -2,6 +2,8 @@
 #include "physics.h"
 #include "converter.h"
 #include <cmath>
+#include <chrono>
+#include <thread>
 constexpr double PI{3.14 /*159265358979323846*/};
 
 void converter()
@@ -818,7 +820,7 @@ void physics()
 int main()
 {
     char n{'y'};
-    while (n == 'y')
+    while (n == 'y' || n=='Y')
     {
         std::cout << "\n======================\n";
         std::cout << "0.exit\n"
@@ -846,5 +848,7 @@ int main()
         std::cout << "\nDo you want to use the program again y/n: ";
         std::cin >> n;
     }
+    std::cout << "\nBye!\n";
+    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
     return 0;
 }
