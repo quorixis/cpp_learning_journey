@@ -849,6 +849,6 @@ int main()
         std::cin >> n;
     }
     std::cout << "\nBye!\n";
-    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    std::this_thread::sleep_for(std::chrono::milliseconds(4000));
     return 0;
 }
