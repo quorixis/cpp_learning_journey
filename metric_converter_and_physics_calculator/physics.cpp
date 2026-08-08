@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
-constexpr double g{9.80665};
-constexpr double PI{3.14/*159265358979323846*/};
+#include "constants.h"
 
 // Kinematics
 

@@ -4,7 +4,7 @@
 #include <cmath>
 #include <chrono>
 #include <thread>
-constexpr double PI{3.14 /*159265358979323846*/};
+#include "constants.h"
 
 void converter()
 {
@@ -849,6 +849,6 @@ int main()
         std::cin >> n;
     }
     std::cout << "\nBye!\n";
-    std::this_thread::sleep_for(std::chrono::milliseconds(4000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(2500));
     return 0;
 }
